@@ -1,0 +1,204 @@
+{
+  "products": [
+    {
+      "id": 3,
+      "name": "LOGOS HOODIE - TAN",
+      "price": "599000",
+      "quantity": "100",
+      "status": false,
+      "category": "2",
+      "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2F3-ta9404-tx01-1_735a17c0b3c74eeeb9944f000a37d8e9_master.webp?alt=media&token=036cf380-bef0-4472-bc9b-f7dcc461e08d"
+    },
+    {
+      "id": 4,
+      "name": "LOGO WASHED HOODIE - BLACK/PINK",
+      "price": "699000",
+      "quantity": "50",
+      "status": false,
+      "category": "2",
+      "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2Fswe_20421_1__b853a76c90724db1bcdcfa8b776b325a_master.webp?alt=media&token=482883fa-bb54-4f7a-a1d7-9fbabbf937ef",
+      "description": "<p><strong>xax</strong></p>"
+    },
+    {
+      "id": 5,
+      "name": "LOGO WASHED HOODIE - BLACK/PINK",
+      "price": "599000",
+      "quantity": "50",
+      "status": false,
+      "category": "2",
+      "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2Fswe_20421_1__b853a76c90724db1bcdcfa8b776b325a_master.webp?alt=media&token=482883fa-bb54-4f7a-a1d7-9fbabbf937ef",
+      "description": "<p><strong>xax</strong></p>"
+    },
+    {
+      "id": 6,
+      "name": "TRICOLOR JACKET - SILVER",
+      "price": "560000",
+      "quantity": "2",
+      "status": true,
+      "category": "1",
+      "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2F18-te9512-tx01-1_0d77add3e4d24b72ac0ad55249206917_master.webp?alt=media&token=a3ea46fd-6a2d-4599-b74b-8a1905767624"
+    },
+    {
+      "id": 7,
+      "name": "BASIC SWEATPANTS - CREAM",
+      "price": "449000",
+      "quantity": "10",
+      "status": false,
+      "category": "3",
+      "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2F_nio0990_f019eff6fbac41ab811d6c422b5e73c0_master.webp?alt=media&token=592c6907-a2f8-4b0e-8425-4fc5a98014b7"
+    },
+    {
+      "id": 8,
+      "name": "SWE SPIRAL TIE DYE (UV) SHORTS - BLUE",
+      "price": "400000",
+      "quantity": "20",
+      "status": false,
+      "category": "3",
+      "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2F1-te8102-tx01-1_29692d3a92d84b2882c26d43470a7b02_master.webp?alt=media&token=0c7e80a5-5ce2-48ca-88ac-69b8cf944e14"
+    },
+    {
+      "id": 9,
+      "name": "TRICOLOR JACKET - BLUE",
+      "price": "560000",
+      "quantity": "100",
+      "status": false,
+      "category": "1",
+      "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2F1-te8102-tx01-1_29692d3a92d84b2882c26d43470a7b02_master.webp?alt=media&token=d0866656-5b45-4b4b-98c4-cecd4160da94"
+    },
+    {
+      "id": 10,
+      "name": "SOCCER JERSEY - BLACK/ORANGE",
+      "price": "50000",
+      "quantity": "100",
+      "status": false,
+      "category": "2",
+      "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2Ff_e5c42801a298442eb6aad705b4c9d65b_master.webp?alt=media&token=bbab2dc9-ca25-4fd1-95b6-b5b52b9b9443"
+    }
+  ],
+  "category": [
+    {
+      "name": "Jackets",
+      "id": 1
+    },
+    {
+      "name": "Hoodie",
+      "id": 2
+    },
+    {
+      "name": "BOTTOMS",
+      "id": 3
+    }
+  ],
+  "billing": [
+    {
+      "id": 12,
+      "fullname": "12",
+      "street": "12",
+      "city": "1221",
+      "state": "qn",
+      "email": "121",
+      "phone": "12",
+      "status": "Đặt hàng",
+      "user": "null"
+    },
+    {
+      "fullname": "das",
+      "total": null,
+      "user": null,
+      "status": "Đặt hàng",
+      "date": 1615143854325,
+      "item": [
+        {
+          "id": "11",
+          "name": "sp",
+          "price": "1",
+          "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2Ff_e5c42801a298442eb6aad705b4c9d65b_master.webp?alt=media&token=39910f26-e2a9-40a0-a16a-6c3774919019",
+          "quantity": "1",
+          "size": "S"
+        }
+      ],
+      "id": 22
+    },
+    {
+      "fullname": "trungs ky",
+      "total": null,
+      "user": null,
+      "status": "Đặt hàng",
+      "date": 1615143916945,
+      "item": [
+        {
+          "id": "7",
+          "name": "BASIC SWEATPANTS - CREAM",
+          "price": "449000",
+          "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2F_nio0990_f019eff6fbac41ab811d6c422b5e73c0_master.webp?alt=media&token=592c6907-a2f8-4b0e-8425-4fc5a98014b7",
+          "quantity": "1",
+          "size": "S"
+        }
+      ],
+      "id": 23
+    },
+    {
+      "fullname": "Bùi Chí Trung",
+      "email": "trungsky01@gmail.com",
+      "street": "hai yen",
+      "city": "mong cai",
+      "postcode": "200000",
+      "state": "uang ninh",
+      "phone": "0377312312",
+      "total": "1120000",
+      "user": "6037d8a70e21221b652f5eb6",
+      "status": "Đặt hàng",
+      "date": 1615144150492,
+      "item": [
+        {
+          "id": "9",
+          "name": "TRICOLOR JACKET - BLUE",
+          "price": "560000",
+          "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2F1-te8102-tx01-1_29692d3a92d84b2882c26d43470a7b02_master.webp?alt=media&token=d0866656-5b45-4b4b-98c4-cecd4160da94",
+          "quantity": "1",
+          "size": "S"
+        },
+        {
+          "id": "9",
+          "name": "TRICOLOR JACKET - BLUE",
+          "price": "560000",
+          "image": "https://firebasestorage.googleapis.com/v0/b/upload-imagess.appspot.com/o/images%2F1-te8102-tx01-1_29692d3a92d84b2882c26d43470a7b02_master.webp?alt=media&token=d0866656-5b45-4b4b-98c4-cecd4160da94",
+          "quantity": "1",
+          "size": "L"
+        }
+      ],
+      "id": 24
+    }
+  ],
+  "contact": [
+    {
+      "fullname": "tset",
+      "phone": "dsadas",
+      "email": "dasdsa@casca.cc",
+      "message": "dasdas",
+      "id": 2
+    },
+    {
+      "fullname": "dadas",
+      "phone": "131",
+      "email": "3132@31.3131",
+      "message": "31312",
+      "id": 3
+    },
+    {
+      "fullname": "Bui chi trung",
+      "phone": "0377132111",
+      "email": "trungsky01@gmail.com",
+      "message": "Xin chao moi nguoi",
+      "id": 4
+    }
+  ],
+  "banner": {
+    "img": "https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/",
+    "hero_text": "Siêu cấp",
+    "hero_title": "2",
+    "hero_desc": "3",
+    "btn_title": "Mua ngay mua ngay",
+    "btn_url": "https://www.facebook.com/groups/feed/"
+  }
+}
