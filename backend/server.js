@@ -6,10 +6,12 @@ const UserSchema = require("./models/user");
 var cors = require("cors");
 app.use(cors());
 require("dotenv/config");
+
 mongoose.connect(process.env.DB_CONNECT, {
-  useUnifiedTopology: true,
   useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var cookieParser = require("cookie-parser");
