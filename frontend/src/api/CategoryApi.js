@@ -2,7 +2,7 @@ import { axiosClient } from "./axiosClient";
 
 const CategoryApi = {
   getAll() {
-    const url = `/category`;
+    const url = `/categories`;
     return axiosClient.get(url);
   },
   get(id) {

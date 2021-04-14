@@ -12,12 +12,12 @@ const HomePage = {
         <div class="product">
           <div class="product-image">
             ${item.status ? "<div class='ribbon ribbon-info'>SALE</div>" : ""}
-            <img class="img-fluid" src="${item.image}" alt="product">
+            <img class="img-fluid" src="${item.photo}" alt="product">
             <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
-              item.id
+              item._id
             }"></a>
               <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="/#/products/${
-                item.id
+                item._id
               }"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">View</span></a>
               
               </div>
@@ -25,7 +25,7 @@ const HomePage = {
           </div>
           <div class="py-2">
             <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="/#/products/${
-              item.id
+              item._id
             }">${item.name}</a></h3><span class="text-muted">${formatter.format(
           item.price
         )}</span>
