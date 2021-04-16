@@ -44,7 +44,6 @@ const billingSchema = new mongoose.Schema(
     user: {
       type: String,
       trim: true,
-      required: true,
     },
     status: {
       type: String,

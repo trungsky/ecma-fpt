@@ -9,13 +9,13 @@ export const signup = (req, res) => {
   user.save((err, user) => {
     if (err) {
       return res.status(400).json({
-        error: 'Không thể đăng ký tài khoản',
+        error: "Không thể đăng ký tài khoản",
       });
     }
     res.json({ user });
   });
 };
-exports.signin = (req, res) => {
+export const signin = (req, res) => {
   const { email, password } = req.body;
   User.findOne({ email }, (error, user) => {
     if (error || !user) {

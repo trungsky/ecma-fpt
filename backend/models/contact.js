@@ -32,6 +32,6 @@ const contactSchema = mongoose.Schema(
       maxLength: 2000,
     },
   },
-  { timestamps: true }
+  { timestamps: true, versionKey: false }
 );
 module.exports = mongoose.model("Contact", contactSchema);
