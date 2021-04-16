@@ -3,13 +3,13 @@ const router = express.Router();
 // import { requireSignin, isAuth, isAdmin } from "../controllers/auth";
 // import { userById } from "../controllers/user";
 
-import { lists, create, getById, editById} from "../controllers/banner";
+import { lists, create, findById, editById } from "../controllers/billing";
 
-router.get("/banner", lists);
-router.get("/banner/:id", getById);
+router.get("/billing", lists);
+router.get("/billing/:id", findById);
 
-router.post("/banner", create);
-router.patch("/banner/:id", editById);
+router.post("/billing", create);
+router.patch("/billing/:id", editById);
 // router.delete(
 //   "/products/:productId/:userId",
 //   requireSignin,

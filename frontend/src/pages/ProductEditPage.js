@@ -1,4 +1,4 @@
-import { parseRequestUrl, $, checkRole } from "../utils";
+import { parseRequestUrl, $ } from "../utils";
 import ProductApi from "../api/ProductApi";
 import CategoryApi from "../api/CategoryApi";
 import firebase from "firebase";
@@ -11,7 +11,6 @@ const ProductEditPage = {
     const { id } = parseRequestUrl();
     const { data: products } = await ProductApi.get(id);
     const { data: categories } = await CategoryApi.getAll();
-    checkRole();
     return /*html*/ `
     ${await AdminMenu.render()}
     <div class="row">
@@ -65,8 +64,8 @@ const ProductEditPage = {
               ${categories
                 .map((cate) => {
                   return `
-                  <option value="${cate.id}" ${
-                    cate.id == products.category ? "selected" : ""
+                  <option value="${cate._id}" ${
+                    cate._id == products.category ? "selected" : ""
                   }>${cate.name}</option>
                   `;
                 })

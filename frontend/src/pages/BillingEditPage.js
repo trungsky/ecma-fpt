@@ -1,4 +1,4 @@
-import { parseRequestUrl, $, checkRole } from "../utils";
+import { parseRequestUrl, $ } from "../utils";
 import ProductApi from "../api/ProductApi";
 import CategoryApi from "../api/CategoryApi";
 import BillingApi from "../api/BillingApi";
@@ -9,7 +9,6 @@ const BillingEditPage = {
     // const { data: products } = await ProductApi.get(id);
     const { data: categories } = await CategoryApi.getAll();
     const { data: bill } = await BillingApi.get(id);
-    checkRole();
     return /*html*/ `
     ${await AdminMenu.render()}
     <div class="row">
@@ -24,12 +23,12 @@ const BillingEditPage = {
 
           <!-- credit card info-->
           <div id="nav-tab-card" class="tab-pane fade show active">
-            <p class="text-center text-xl">Chỉnh sửa bill: ${bill.id}</p>
+            <p class="text-center text-xl">Chỉnh sửa bill: ${bill._id}</p>
             <form role="form" id="form-update">
               <div class="form-group">
                 <label for="bill-id">ID Bill</label>
                 <input type="text" id="bill-id" placeholder="ID Bill" value="${
-                  bill.id
+                  bill._id
                 }" disabled class="form-control">
               </div>
               <div class="form-group">
@@ -112,7 +111,7 @@ const BillingEditPage = {
     $("#form-update").addEventListener("submit", async function (e) {
       e.preventDefault();
       const newBill = {
-        id: bill.id,
+        id: bill._id,
         fullname: $("#bill-fullname").value,
         street: $("#bill-street").value,
         city: $("#bill-city").value,

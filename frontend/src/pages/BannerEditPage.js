@@ -1,12 +1,11 @@
-import { parseRequestUrl, $, checkRole } from "../utils";
+import { parseRequestUrl, $ } from "../utils";
 import BannerApi from "../api/BannerApi";
 import AdminMenu from "./AdminMenu";
 const BannerEditPage = {
   async render() {
     const { id } = parseRequestUrl();
-    const { data: banner } = await BannerApi.getAll();
+    const { data: banner } = await BannerApi.get('6078fdee9a2cd21a44a13366');
     console.log(banner);
-    checkRole();
     return /*html*/ `
     ${await AdminMenu.render()}
     <div class="row">
@@ -22,7 +21,7 @@ const BannerEditPage = {
           <!-- credit card info-->
           <div id="nav-tab-card" class="tab-pane fade show active">
             <p class="text-center text-xl">Chỉnh sửa banner</p>
-            <form role="form" id="form-update">
+            <form role="form" id="form-update" action"http://localhost:8081/api/banner/id">
               <div class="form-group">
                 <label for="hero_text">Top text</label>
                 <input type="text" id="hero_text" placeholder="Hero text" value="${
@@ -65,7 +64,6 @@ const BannerEditPage = {
               </div>
             </div>
 
-
               <div class="form-group">
                 <label for="btn_url">Button url</label>
                 <div class="input-group">
@@ -84,10 +82,9 @@ const BannerEditPage = {
   </div>`;
   },
   async afterRender() {
-    const { data: banner } = await BannerApi.getAll();
+    // const { data: banner } = await BannerApi.get('6078fdee9a2cd21a44a13366');
     $("#form-update").addEventListener("submit", async function (e) {
       e.preventDefault();
-
       const newBanner = {
         img: $("#img").value,
         hero_text: $("#hero_text").value,
@@ -96,7 +93,6 @@ const BannerEditPage = {
         btn_title: $("#btn_title").value,
         btn_url: $("#btn_url").value,
       };
-      
       BannerApi.update(newBanner);
       toastr.success("Update thành công!", "Thành công");
       // window.location.hash("/listproduct");

@@ -3,13 +3,15 @@ const router = express.Router();
 // import { requireSignin, isAuth, isAdmin } from "../controllers/auth";
 // import { userById } from "../controllers/user";
 
-import { lists, create, getById, editById} from "../controllers/banner";
+import { lists, create, getById, editById } from "../controllers/contact";
 
-router.get("/banner", lists);
-router.get("/banner/:id", getById);
+router.get("/contact", lists);
 
-router.post("/banner", create);
-router.patch("/banner/:id", editById);
+// router.get("/banner/:id", getById);
+
+router.post("/contact", create);
+// router.patch("/banner/:id", editById);
+
 // router.delete(
 //   "/products/:productId/:userId",
 //   requireSignin,

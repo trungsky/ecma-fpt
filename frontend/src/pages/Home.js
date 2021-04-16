@@ -4,7 +4,8 @@ import BannerApi from "../api/BannerApi";
 const HomePage = {
   async render() {
     const { data: products } = await ProductApi.homeItems();
-    const { data: banner } = await BannerApi.getAll();
+    const { data: banner } = await BannerApi.get('6078fdee9a2cd21a44a13366');
+
     const result = `${products
       .map(
         (item) => `

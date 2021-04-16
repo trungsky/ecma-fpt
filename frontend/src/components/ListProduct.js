@@ -5,7 +5,6 @@ import { $, formatter, reRender } from "../utils";
 const ListProduct = {
   async render() {
     const { data: products } = await ProductApi.getAll();
-    const { data: categories } = await CategoryApi.getAll();
     return `
     <div class="table-responsive">
     <table class="table table-striped table-sm">
@@ -26,15 +25,19 @@ const ListProduct = {
             .map((product) => {
               return `
               <tr>
-              <td>${product.id}</td>
+              <td>${product._id}</td>
               <td>${product.name}</td>
               <td><img src="${product.image}" width="40px"/></td>
               <td>${formatter.format(product.price)}</td>
               <td>${product.quantity}</td>
-              <td>${product.status ? 'SALE' : 'NOT SALE'}</td>
-              <td>${product.category}</td>
-              <td><a href="/#/editproduct/${product.id}"><button class="btn btn-primary">Update</button></a>
-              <button class="btn btnss btn-danger btn-remove" data-id="${product.id}">Delete</button>
+              <td>${product.status ? "SALE" : "NOT SALE"}</td>
+              <td class="cate-id">${product.category}</td>
+              <td><a href="/#/editproduct/${
+                product._id
+              }"><button class="btn btn-primary">Update</button></a>
+              <button class="btn btnss btn-danger btn-remove" data-id="${
+                product._id
+              }">Delete</button>
               </td>
             </tr>
               `;

@@ -103,7 +103,7 @@ const Header = {
             ${categories
               .map((cate) => {
                 return `
-                <li><a class="text-center dropdown-item" href="/#/category/${cate.id}">${cate.name}</a></li>
+                <li><a class="text-center dropdown-item" href="/#/category/${cate._id}">${cate.name}</a></li>
                 `;
               })
               .join("")}

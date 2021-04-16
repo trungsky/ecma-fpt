@@ -9,6 +9,8 @@ import expressValidator from "express-validator";
 import cors from "cors";
 import RouterUser from "./routes/user";
 import RouterBanner from "./routes/banner";
+import RouterBilling from "./routes/billing";
+import RouterContact from "./routes/contact";
 const cookieParser = require("cookie-parser");
 
 dotenv.config();
@@ -29,6 +31,8 @@ app.get("/", HomePage);
 app.use("/api", auth);
 app.use("/api", RouterUser);
 app.use("/api", RouterBanner);
+app.use("/api", RouterBilling);
+app.use("/api", RouterContact);
 
 mongoose
   .connect(process.env.MONGO_URL, {

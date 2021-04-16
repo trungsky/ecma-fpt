@@ -1,9 +1,8 @@
 import ContactApi from "../api/ContactApi";
-import { $, reRender, checkRole } from "../utils";
+import { $, reRender } from "../utils";
 import AdminMenu from "../pages/AdminMenu";
 const ListContact = {
   async render() {
-    checkRole();
     const { data: contacts } = await ContactApi.getAll();
     return `
     ${await AdminMenu.render()}
@@ -25,7 +24,7 @@ const ListContact = {
             .map((message) => {
               return `
               <tr>
-              <td>${message.id}</td>
+              <td>${message._id}</td>
               <td>${message.fullname}</td>
               <td>${message.email}</td>
               <td>${message.phone}</td>

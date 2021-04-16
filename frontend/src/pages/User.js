@@ -5,8 +5,8 @@ import BillingApi from "../api/BillingApi";
 import AdminMenu from "./AdminMenu";
 const User = {
   async render() {
-    const { data: getUser } = await axios.get(
-      "http://localhost:5000/api/getUser"
+    const { data: getUser } = await axios.post(
+      "http://localhost:8081/api/signin"
     );
 
     const resStatus = getCookie("resStatus");

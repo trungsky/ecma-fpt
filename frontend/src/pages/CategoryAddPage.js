@@ -1,10 +1,8 @@
 import CategoryApi from "../api/CategoryApi";
-import { $, checkRole } from "../utils";
+import { $ } from "../utils";
 import AdminMenu from "./AdminMenu";
 const CategoryAddPage = {
   async render() {
-    checkRole();
-
     const { data: categories } = await CategoryApi.getAll();
     return /*html*/ `
     ${await AdminMenu.render()}
@@ -14,8 +12,6 @@ const CategoryAddPage = {
         <!-- Credit card form tabs -->
         
         <!-- End -->
-
-
         <!-- Credit card form content -->
         <div class="tab-content p-5">
 
@@ -46,6 +42,10 @@ const CategoryAddPage = {
         name: $("#category-name").value,
       };
       CategoryApi.add(category);
+      toastr.info("Thêm danh mục thành công");
+      toastr.success("Ahihi");
+      toastr.error("Đẳng cấp");
+      location.href = "/#/listcategory"
     });
   },
 };

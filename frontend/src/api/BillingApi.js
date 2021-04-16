@@ -19,7 +19,7 @@ const BillingApi = {
   },
   update(id, data) {
     const url = `/billing/${id}`;
-    return axiosClient.put(url, data);
+    return axiosClient.patch(url, data);
   },
 };
 export default BillingApi;

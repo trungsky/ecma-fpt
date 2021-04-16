@@ -27,7 +27,6 @@ import ListBilling from "./components/ListBilling.js";
 import ListContact from "./components/ListContact.js";
 import BillingEditPage from "./pages/BillingEditPage.js";
 import BannerEditPage from "./pages/BannerEditPage.js";
-import test from "./pages/test";
 import ListUser from "./components/ListUser.js";
 import UserEditPage from "./pages/UserEditPage.js";
 
@@ -59,7 +58,6 @@ const routes = {
   "/listbilling": ListBilling,
   "/listcontact": ListContact,
   "/listuser": ListUser,
-  "/test": test,
 };
 
 const router = async () => {

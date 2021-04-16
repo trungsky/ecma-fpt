@@ -1,11 +1,9 @@
 import BillingApi from "../api/BillingApi";
-import { $, formatter, reRender, checkRole } from "../utils";
+import { $, formatter, reRender } from "../utils";
 import AdminMenu from "../pages/AdminMenu";
 const ListBilling = {
   async render() {
-    checkRole()
     const { data: billing } = await BillingApi.getAll();
-
     return `
     ${await AdminMenu.render()}
     <div class="table-responsive">
@@ -29,7 +27,7 @@ const ListBilling = {
             .map((bill) => {
               return `
               <tr>
-              <td>${bill.id}</td>
+              <td>${bill._id}</td>
               <td>${bill.fullname}</td>
               <td>${bill.email}</td>
               <td>${bill.phone}</td>
@@ -39,10 +37,10 @@ const ListBilling = {
               <td>${bill.status}</td>
               <td>${bill.user == null ? "User" : "Guest"}</td>
               <td><a href="/#/editbill/${
-                bill.id
+                bill._id
               }"><button class="btn btn-primary">Update</button></a>
               <button class="btn btnss btn-danger btn-remove" data-id="${
-                bill.id
+                bill._id
               }">Delete</button>
               </td>
             </tr>

@@ -1,38 +1,37 @@
 import mongoose from "mongoose";
 
-const bannerSchema = mongoose.Schema(
+const contactSchema = mongoose.Schema(
   {
-    img: {
+    fullname: {
+      type: String,
+      trim: true,
+      required: true,
+      maxLength: 32,
+    },
+    email: {
+      type: String,
+      trim: true,
+      required: true,
+      maxLength: 32,
+    },
+    phone: {
+      type: String,
+      trim: true,
+      required: true,
+      maxLength: 12,
+    },
+    email: {
       type: String,
       trim: true,
       required: true,
     },
-    hero_text: {
+    message: {
       type: String,
       trim: true,
       required: true,
-    },
-    hero_title: {
-      type: String,
-      trim: true,
-      required: true,
-    },
-    hero_desc: {
-      type: String,
-      trim: true,
-      required: true,
-    },
-    btn_title: {
-      type: String,
-      trim: true,
-      required: true,
-    },
-    btn_url: {
-      type: String,
-      trim: true,
-      required: true,
+      maxLength: 2000,
     },
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("Banner", bannerSchema);
+module.exports = mongoose.model("Contact", contactSchema);

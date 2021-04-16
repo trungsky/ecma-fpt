@@ -1,12 +1,11 @@
 import ProductApi from "../api/ProductApi";
 import CategoryApi from "../api/CategoryApi";
-import { $, checkRole } from "../utils";
+import { $ } from "../utils";
 import firebase from "firebase";
 import "../../firebase";
 import test from "./AdminMenu";
 const ProductAddPage = {
   async render() {
-    checkRole();
     const { data: categories } = await CategoryApi.getAll();
     return /*html*/ `
     ${await test.render()}

@@ -99,9 +99,9 @@ const Cart1 = {
       $("#showCart1").classList.toggle("show");
     });
 
-    const { data: listUser } = await axios.get(
-      "http://localhost:5000/api/getUser"
-    );
+    // const { data: listUser } = await axios.get(
+    //   "http://localhost:8081/api/secret/getUser"
+    // );
 
     if (localStorage.getItem("itemsArray") == null) {
       toastr.error("Chưa có sản phẩm sao mà pay ?");

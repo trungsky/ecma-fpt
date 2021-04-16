@@ -1,11 +1,10 @@
-import { parseRequestUrl, $, checkRole } from "../utils";
+import { parseRequestUrl, $ } from "../utils";
 import UserApi from "../api/UserApi";
 import AdminMenu from "./AdminMenu";
 const UserEditPage = {
   async render() {
     const { id } = parseRequestUrl();
     const { data: users } = await UserApi.get(id);
-    checkRole();
     return /*html*/ `
     ${await AdminMenu.render()}
     <div class="row">
@@ -13,11 +12,8 @@ const UserEditPage = {
       <div class="bg-white rounded-lg shadow-sm p-5">
         <!-- Credit card form tabs -->
         <!-- End -->
-
-
         <!-- Credit card form content -->
         <div class="tab-content">
-
           <!-- credit card info-->
           <div id="nav-tab-card" class="tab-pane fade show active">
             <p class="text-center text-xl">Chỉnh sửa user</p>

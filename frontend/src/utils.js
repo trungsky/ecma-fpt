@@ -53,26 +53,6 @@ export const getCookie = function (name) {
   if (parts.length === 2) return parts.pop().split(";").shift();
 };
 
-export const checkRole = async function () {
-  const { data: getUser } = await axios.get(
-    "http://localhost:5000/api/getUser"
-  );
-  const user = await getUser.filter((e) => e._id === getCookie("id"));
-
-  if (user.length != 0) {
-    if (user[0].role == 0) {
-      toastr.error("Không có quyền truy cập");
-      window.location.href = "http://localhost:8080/#/user";
-    } else if (user[0].role == 1) {
-      toastr.info("Hello admin");
-      console.log("Hello admin");
-    }
-  } else {
-    window.location.href = "http://localhost:8080/#/";
-  }
-  console.log("check role");
-};
-
 export const getCateName = async (id) => {
   const { data: categoryName } = await CategoryApi.get(id);
   return categoryName.name;

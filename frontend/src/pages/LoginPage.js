@@ -1,6 +1,7 @@
 import { $, getCookie } from "../utils";
 const LoginPage = {
   async render() {
+    const meo = getCookie("t");
     const resStatus = getCookie("resStatus");
     if (resStatus != undefined) {
       if (resStatus == "success") {
@@ -53,7 +54,7 @@ const LoginPage = {
                 <p class="lead">Already our customer?</p>
                 <p class="text-muted">Login now bro</p>
                 <hr>
-                <form id="login_form" action="http://localhost:5000/login" method="post">
+                <form id="login_form" action="http://localhost:8081/api/signin" method="post">
                   <div class="form-group">
                     <label class="form-label" for="log_email">Email</label>
                     <input class="form-control" name="email" id="log_email" type="text">
@@ -78,7 +79,7 @@ const LoginPage = {
                 <p class="lead">Not our registered customer yet?</p>
                 <p class="text-muted">Register now bro, if have problem <a href="/#/contact">contact us</a>, our customer service center is working for you 24/7.</p>
                 <hr>
-                <form id="reg_form" action="http://localhost:5000/register" method="post">
+                <form id="reg_form" action="http://localhost:8081/api/signup" method="post">
                   <div class="form-group">
                     <label class="form-label" for="reg_name">Name</label>
                     <input class="form-control" name="name" id="reg_name" type="text">

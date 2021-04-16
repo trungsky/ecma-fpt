@@ -1,11 +1,10 @@
-import { parseRequestUrl, $, checkRole } from "../utils";
+import { parseRequestUrl, $ } from "../utils";
 import CategoryApi from "../api/CategoryApi";
 import AdminMenu from "./AdminMenu";
 const CategoryEditPage = {
   async render() {
     const { id } = parseRequestUrl();
     const { data: categories } = await CategoryApi.get(id);
-    checkRole();
     return /*html*/ `
     ${await AdminMenu.render()}
     <div class="row">
@@ -13,18 +12,15 @@ const CategoryEditPage = {
       <div class="bg-white rounded-lg shadow-sm p-5">
         <!-- Credit card form tabs -->
         <!-- End -->
-
-
         <!-- Credit card form content -->
         <div class="tab-content">
-
           <!-- credit card info-->
           <div id="nav-tab-card" class="tab-pane fade show active">
             <p class="text-center text-xl">Chỉnh sửa category</p>
             <form role="form" id="form-update">
               <div class="form-group">
                 <label for="category-id">ID Category</label>
-                <input type="text" id="category-id" placeholder="Tên sản phẩm" value="${categories.id}" disabled class="form-control">
+                <input type="text" id="category-id" placeholder="Tên sản phẩm" value="${categories._id}" disabled class="form-control">
               </div>
               <div class="form-group">
                 <label for="category-name">Category name</label>

@@ -27,7 +27,7 @@ const ProductApi = {
   },
   update(id, data) {
     const url = `/products/${id}`;
-    return axiosClient.put(url, data);
+    return axiosClient.patch(url, data);
   },
   search(name) {
     const url = `/products?q=${name}`;

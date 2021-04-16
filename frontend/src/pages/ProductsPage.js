@@ -23,17 +23,17 @@ const ProductsPage = {
               product.status ? '<div class="ribbon ribbon-info">SALE</div>' : ""
             }<img class="img-fluid" src="${product.image}" alt="product"/>
             <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
-              product.id
+              product._id
             }"></a>
               <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="/#/products/${
-                product.id
+                product._id
               }"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">View</span></a>
               </div>
             </div>
           </div>
           <div class="py-2">
             <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="/#/products/${
-              product.id
+              product._id
             }">${
             product.name
           }</a></h3><span class="text-muted">${formatter.format(
@@ -103,7 +103,7 @@ const ProductsPage = {
               ${categories
                 .map((cate) => {
                   return `
-                  <a class="nav-link d-flex justify-content-between mb-2" href="/#/category/${cate.id}">
+                  <a class="nav-link d-flex justify-content-between mb-2" href="/#/category/${cate._id}">
               <span>${cate.name}</span>
               </a>
                   `;
@@ -139,17 +139,17 @@ const ProductsPage = {
             product.status ? '<div class="ribbon ribbon-info">SALE</div>' : ""
           }<img class="img-fluid" src="${product.image}" alt="product"/>
           <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
-            product.id
+            product._id
           }"></a>
             <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="/#/products/${
-              product.id
+              product._id
             }"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">View</span></a>
             </div>
           </div>
         </div>
         <div class="py-2">
           <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="/#/products/${
-            product.id
+            product._id
           }">${
           product.name
         }</a></h3><span class="text-muted">${formatter.format(
@@ -198,17 +198,17 @@ const ProductsPage = {
             product.status ? '<div class="ribbon ribbon-info">SALE</div>' : ""
           }<img class="img-fluid" src="${product.image}" alt="product"/>
           <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
-            product.id
+            product._id
           }"></a>
             <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="/#/products/${
-              product.id
+              product._id
             }"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">View</span></a>
             </div>
           </div>
         </div>
         <div class="py-2">
           <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="/#/products/${
-            product.id
+            product._id
           }">${
             product.name
           }</a></h3><span class="text-muted">${formatter.format(

@@ -11,11 +11,11 @@ import {
   categoryById,
 } from "../controllers/category";
 
-router.post("/category/create/:userId", requireSignin, isAuth, isAdmin, create);
+router.post("/category/create/", create);
 router.get("/category/:categoryId", read);
-router.delete("/category/:categoryId/:userId", remove);
-// router.put("/category/:categoryId/:userId", update);
-router.put("/category/:categoryId/:userId", requireSignin, isAuth, isAdmin, update);
+router.delete("/category/:categoryId/", remove);
+// router.put("/category/:categoryId/", update);
+router.patch("/category/:categoryId/", update);
 router.get("/categories", lists);
 
 // router.param("userId", userById);

@@ -19,10 +19,10 @@ const ListCategory = {
             .map((category) => {
               return `
               <tr>
-              <td>${category.id}</td>
+              <td>${category._id}</td>
               <td>${category.name}</td>
-              <td><a href="/#/editcategory/${category.id}"><button class="btn btn-primary">Update</button></a>
-              <button class="btn btnss btn-danger btn-remove" data-id="${category.id}">Delete</button>
+              <td><a href="/#/editcategory/${category._id}"><button class="btn btn-primary">Update</button></a>
+              <button class="btn btnss btn-danger btn-remove" data-id="${category._id}">Delete</button>
               </td>
             </tr>
               `;

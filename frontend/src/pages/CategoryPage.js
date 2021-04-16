@@ -1,11 +1,11 @@
 import { $, formatter, parseRequestUrl } from "../utils";
-import data from "../../../db.json";
 import CategoryApi from "../api/CategoryApi";
-
+import ProductApi from "../api/ProductApi";
 const CategoryPage = {
   async render() {
+    const { data: products } = await ProductApi.getAll();
     const { id } = parseRequestUrl();
-    const cateResult = data.products.filter((product) => {
+    const cateResult = products.filter((product) => {
       return product.category == id;
     });
     const { data: categories } = await CategoryApi.getAll();
@@ -22,17 +22,17 @@ const CategoryPage = {
               product.status ? '<div class="ribbon ribbon-info">SALE</div>' : ""
             }<img class="img-fluid" src="${product.image}" alt="product"/>
             <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
-              product.id
+              product._id
             }"></a>
               <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="/#/products/${
-                product.id
+                product._id
               }"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">View</span></a><a class="btn btn-outline-dark btn-product-right" href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
               </div>
             </div>
           </div>
           <div class="py-2">
             <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="/#/products/${
-              product.id
+              product._id
             }">${
             product.name
           }</a></h3><span class="text-muted">${formatter.format(
@@ -96,8 +96,8 @@ const CategoryPage = {
                 .map((cate) => {
                   return `
                   <a id="category_side" class="nav-link d-flex justify-content-between mb-2 ${
-                    id == cate.id ? "active" : ""
-                  }" href="/#/category/${cate.id}">
+                    id == cate._id ? "active" : ""
+                  }" href="/#/category/${cate._id}">
               <span>${cate.name}</span>
               </a>
                   `;
@@ -227,7 +227,7 @@ const CategoryPage = {
     const { data: categories } = await CategoryApi.getAll();
 
     categories.map((e) => {
-      if (e.id == id) {
+      if (e._id == id) {
         $(".hero-heading").innerHTML = e.name;
         $("#breadcrumb-item").innerHTML = e.name;
       }
