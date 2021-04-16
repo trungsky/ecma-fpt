@@ -26,8 +26,7 @@ const Cart1 = {
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-           
-            <form id="invoice" action="#">
+            <form id="invoice">
               <div class="block">
                 <!-- Invoice Address-->
                 <div class="block-header">
@@ -153,6 +152,7 @@ const Cart1 = {
             date: Date.now(),
             item: itemArray,
           };
+          console.log(billDetail);
           await BillingApi.add(billDetail);
           localStorage.clear();
           location.href = "/#/order-success";

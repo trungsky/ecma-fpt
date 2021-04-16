@@ -1,7 +1,7 @@
+import axios from "axios";
 import { $, getCookie } from "../utils";
 const LoginPage = {
   async render() {
-    const meo = getCookie("t");
     const resStatus = getCookie("resStatus");
     if (resStatus != undefined) {
       if (resStatus == "success") {
@@ -22,7 +22,7 @@ const LoginPage = {
         toastr.error("User hổng có trên hệ thống nha bủh!");
       }
     }
-    const CCID = getCookie("id");
+    const CCID = getCookie("t");
     if (CCID != undefined) {
       document.cookie = `resStatus=loged; max-age=5;`;
       location.href = "/#/user";
@@ -54,7 +54,7 @@ const LoginPage = {
                 <p class="lead">Already our customer?</p>
                 <p class="text-muted">Login now bro</p>
                 <hr>
-                <form id="login_form" action="http://localhost:8081/api/signin" method="post">
+                <form id="login_form">
                   <div class="form-group">
                     <label class="form-label" for="log_email">Email</label>
                     <input class="form-control" name="email" id="log_email" type="text">
@@ -117,17 +117,32 @@ const LoginPage = {
 
     var mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-    $("#login_form").addEventListener("submit", (e) => {
-      if ($("#log_email").value == "") {
-        toastr.error("Bủh còn chưa nhập email kìa ?");
-        e.preventDefault();
-      } else if (!$("#log_email").value.match(mailformat)) {
-        toastr.error("Email nhập ko có đúng định dạng nha ?");
-        e.preventDefault();
-      } else if ($("#log_password").value == "") {
-        toastr.error("Bủh còn chưa nhập pass kìa ?");
-        e.preventDefault();
-      }
+    $("#login_form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = $("#log_email").value;
+      const password = $("#log_password").value;
+      const user = { email, password };
+      const { data: login } = await axios.post(
+        "http://localhost:8081/api/signin",
+        user
+      );
+      const { _id, name, role } = login.user;
+      localStorage.setItem("id", _id);
+      localStorage.setItem("name", name);
+      localStorage.setItem("role", role);
+
+      // if ($("#log_email").value == "") {
+      //   toastr.error("Bủh còn chưa nhập email kìa ?");
+      //   e.preventDefault();
+      // } else if (!$("#log_email").value.match(mailformat)) {
+      //   toastr.error("Email nhập ko có đúng định dạng nha ?");
+      //   e.preventDefault();
+      // } else if ($("#log_password").value == "") {
+      //   toastr.error("Bủh còn chưa nhập pass kìa ?");
+      //   e.preventDefault();
+      // }else{
+
+      // }
     });
 
     $("#reg_form").addEventListener("submit", (e) => {

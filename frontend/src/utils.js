@@ -57,3 +57,8 @@ export const getCateName = async (id) => {
   const { data: categoryName } = await CategoryApi.get(id);
   return categoryName.name;
 };
+
+export const showError = async (id) => {
+  const { data: categoryName } = await CategoryApi.get(id);
+  return categoryName.name;
+};

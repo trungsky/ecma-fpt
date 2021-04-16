@@ -106,6 +106,7 @@ const ContactPage = {
 
       ContactApi.add(newContact);
       document.cookie = `resStatus=success; max-age=5;`;
+      location.reload();
     });
 
     const resStatus = getCookie("resStatus");
