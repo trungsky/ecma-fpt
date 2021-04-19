@@ -14,7 +14,7 @@ const CartPage = {
                 <div class="d-flex align-items-center"><a href="/#/products/${
                   product.id
                 }"><img class="cart-item-img" src="${
-            product.image
+            product.photo
           }" alt="..."></a>
           <div class="cart-title text-left"><a class="text-uppercase text-dark" href="/#/products/${
             product.id

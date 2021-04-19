@@ -9,11 +9,11 @@ export const create = async (req, res) => {
   form.parse(req, (err, fields, files) => {
     if (err) {
       return res.status(400).json({
-        error: "Thêm sản phẩm không thành công",
+        error: `Thêm sản phẩm không thành công ${err}`,
       });
     }
-    const { name, description, price, category } = fields;
-    if (!name || !description || !price || !category) {
+    const { name, price, category } = fields;
+    if (!name || !price || !category) {
       return res.status(400).json({
         error: "Bạn cần nhập đầy đủ thông tin",
       });
@@ -26,8 +26,8 @@ export const create = async (req, res) => {
           error: "Bạn nên upload ảnh dưới 5mb",
         });
       }
-      product.photo.data = fs.readFileSync(files.photo.path);
-      product.photo.contentType = files.photo.type;
+      // product.photo.data = fs.readFileSync(files.photo.path);
+      // product.photo.contentType = files.photo.type;
     }
     product.save((err, data) => {
       if (err) {
@@ -35,7 +35,6 @@ export const create = async (req, res) => {
           error: `Không thêm được sản phẩm - ${err}`,
         });
       }
-
       res.json(data);
     });
   });
@@ -75,8 +74,8 @@ export const updateById = async (req, res) => {
         error: "Sửa sản phẩm không thành công",
       });
     }
-    const { name, description, price, category } = fields;
-    if (!name || !description || !price || !category) {
+    const { name, price, category } = fields;
+    if (!name || !price || !category) {
       return res.status(400).json({
         error: `All fields are required`,
       });
@@ -90,8 +89,8 @@ export const updateById = async (req, res) => {
           error: "Bạn nên upload ảnh dưới 1mb",
         });
       }
-      product.photo.data = fs.readFileSync(files.photo.path);
-      product.photo.contentType = files.photo.type;
+      // product.photo.data = fs.readFileSync(files.photo.path);
+      // product.photo.contentType = files.photo.type;
       console.log(product);
     }
     product.save((err, data) => {

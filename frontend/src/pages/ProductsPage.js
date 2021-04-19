@@ -21,7 +21,9 @@ const ProductsPage = {
           <div class="product-image">
             ${
               product.status ? '<div class="ribbon ribbon-info">SALE</div>' : ""
-            }<img class="img-fluid" src="${product.image}" alt="product"/>
+            }<img class="img-fluid" src="${
+            product.image
+          }" alt="product err img"/>
             <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
               product._id
             }"></a>
@@ -137,7 +139,7 @@ const ProductsPage = {
         <div class="product-image">
           ${
             product.status ? '<div class="ribbon ribbon-info">SALE</div>' : ""
-          }<img class="img-fluid" src="${product.image}" alt="product"/>
+          }<img class="img-fluid" src="${product.photo}" alt="product"/>
           <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
             product._id
           }"></a>
@@ -229,11 +231,10 @@ const ProductsPage = {
       <li class="page-item"><a class="page-link" href="/#/products//${
         action < Pages ? parseInt(action) + 1 : Pages
       }/${action2}" aria-label="Next"><span aria-hidden="true">Next</span><span class="sr-only">Next</span></a></li>`;
-      
-      if(action2 == "id"){
+
+      if (action2 == "id") {
         $(".hero-heading").innerHTML = "PRODUCTS NEWEST";
-      }
-      else{
+      } else {
         $(".hero-heading").innerHTML = "PRODUCTS";
       }
     }

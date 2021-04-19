@@ -17,7 +17,7 @@ const Header = {
                     product.id
                   }">
                   <img class="img-fluid navbar-cart-product-image pl-3" src="${
-                    product.image
+                    product.photo
                   }"></a>
 
                     <div class="w-100">

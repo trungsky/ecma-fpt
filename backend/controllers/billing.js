@@ -32,3 +32,13 @@ export const editById = async (req, res) => {
   const bill = await Billing.findOneAndUpdate({ _id: req.params.id }, req.body);
   res.json(bill);
 };
+
+export const remove = async (req, res) => {
+  Billing.deleteOne({ _id: req.params.id })
+    .then((data) => {
+      res.json(`Xóa ô kê`);
+    })
+    .catch((err) => {
+      err;
+    });
+};

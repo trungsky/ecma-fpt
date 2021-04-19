@@ -5,6 +5,10 @@ import BillingApi from "../api/BillingApi";
 import AdminMenu from "./AdminMenu";
 const User = {
   async render() {
+    if (getCookie("t") == undefined) {
+      location.href = "/#/account";
+    }
+
     const { data: getUser } = await axios.get(
       `http://localhost:8081/api/user/${localStorage.getItem("id")}`,
       {
@@ -61,7 +65,6 @@ const User = {
     //   document.location.href = "/";
     // }
     const dateReg = new Date(user.createdAt);
-
     return /*html*/ `
     ${user.role == 1 ? `${await AdminMenu.render()}` : ""}
     <section class="hero">
@@ -138,7 +141,7 @@ const User = {
   </svg></use>
                   </svg>Change infomation</span></a>
                   
-                  <a class="list-group-item d-flex justify-content-between align-items-center" id="btnLogout" href="/#/logout"><span>
+                  <a class="list-group-item d-flex justify-content-between align-items-center" id="btnLogout" href="#"><span>
                   <svg class="svg-icon svg-icon-heavy mr-2">
                     <use xlink:href="#exit-1"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" id="exit-1">
                     <title>Exit</title>

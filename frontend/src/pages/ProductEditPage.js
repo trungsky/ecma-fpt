@@ -77,7 +77,7 @@ const ProductEditPage = {
               <div class="mb-3">
                   <label for="product-image" class="form-label">Image</label>
                   <input class="form-control" type="file" id="product-image">
-                  <img class="img pt-2" src="${products.image}" width="200px"/>
+                  <img class="img pt-2" src="${products.photo}" width="200px"/>
               </div>
 
               <div class="mb-3">
@@ -113,32 +113,32 @@ const ProductEditPage = {
       const file = document.querySelector("#product-image").files[0];
       if (file == undefined) {
         const newProduct = {
-          id: products.id,
+          // id: products._id,
           name: $("#product-name").value,
           price: $("#product-price").value,
           quantity: $("#product-quantity").value,
           status: $("#product-status").checked ? true : false,
           category: $("#product-category").value,
-          image: products.image,
+          photo: products.photo,
           description: myEditor.getData(),
         };
-        ProductApi.update(id, newProduct);
+        ProductApi.update(id, localStorage.getItem("id"), newProduct);
         toastr.success("Update thành công!", "Thành công");
       } else {
         const storageRef = firebase.storage().ref(`images/${file.name}`);
         await storageRef.put(file).then(function () {
           storageRef.getDownloadURL().then((url) => {
             const newProduct = {
-              id: products.id,
+              // id: products._id,
               name: $("#product-name").value,
               price: $("#product-price").value,
               quantity: $("#product-quantity").value,
               status: $("#product-status").checked ? true : false,
               category: $("#product-category").value,
-              image: url,
+              photo: url,
               description: myEditor.getData(),
             };
-            ProductApi.update(id, newProduct);
+            ProductApi.update(id, localStorage.getItem("id"), newProduct);
             toastr.success("Update thành công!", "Thành công");
           });
         });

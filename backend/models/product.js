@@ -10,7 +10,6 @@ const productSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      required: true,
       maxlength: 2000,
     },
     price: {
@@ -32,8 +31,9 @@ const productSchema = new mongoose.Schema(
     //   default: 0,
     // },
     photo: {
-      data: Buffer,
-      contentType: String,
+      // data: Buffer,
+      // contentType: String,
+      type: String,
     },
     status: {
       required: false,

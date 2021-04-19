@@ -21,7 +21,7 @@ const ProductDetail = {
         <div class="product-image">
         ${item.status ? "<div class='ribbon ribbon-info'>SALE</div>" : ""}
 
-        <img class="img-fluid" src="${item.image}" alt="product"/>
+        <img class="img-fluid" src="${item.photo}" alt="product"/>
           <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
             item.id
           }"></a>
@@ -50,7 +50,7 @@ const ProductDetail = {
                 <div class="ml-4 col-lg-6 py-3 order-2 order-lg-1">
                   <div class="detail-full" data-slider-id="1">
                     <div class="detail-full-item">
-                    <img class="img-fluid mh-100 w-100" src=${products.image}>
+                    <img class="img-fluid mh-100 w-100" src=${products.photo}>
                     
                     </div>
                   </div>
@@ -139,7 +139,7 @@ const ProductDetail = {
           id: `${products._id}`,
           name: `${products.name}`,
           price: `${products.price}`,
-          image: `${products.image}`,
+          photo: `${products.photo}`,
           quantity: `${$(".products-quantity").value}`,
           size: `${$("input[name = size]:checked").value}`,
         };

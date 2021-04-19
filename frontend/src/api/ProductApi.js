@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { getCookie } from "../utils";
 export const axiosClient = axios.create({
   // baseURL: 'https://5e79b4b817314d00161333da.mockapi.io',
   baseURL: "http://localhost:8081/api/",
@@ -18,16 +18,28 @@ const ProductApi = {
     return axiosClient.get(url);
   },
   add(product) {
-    const url = `/products`;
-    return axiosClient.post(url, product);
+    const url = `/products/create/:userId`;
+    return axiosClient.post(url, product, {
+      headers: {
+        Authorization: "Bearer " + getCookie("t"),
+      },
+    });
   },
-  remove(id) {
-    const url = `/products/${id}`;
-    return axiosClient.delete(url);
+  remove(id, idUser) {
+    const url = `/products/${id}/${idUser}`;
+    return axiosClient.delete(url, {
+      headers: {
+        Authorization: "Bearer " + getCookie("t"),
+      },
+    });
   },
-  update(id, data) {
-    const url = `/products/${id}`;
-    return axiosClient.patch(url, data);
+  update(id, idUser, data) {
+    const url = `/products/${id}/${idUser}`;
+    return axiosClient.patch(url, data, {
+      headers: {
+        Authorization: "Bearer " + getCookie("t"),
+      },
+    });
   },
   search(name) {
     const url = `/products?q=${name}`;

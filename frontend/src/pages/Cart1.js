@@ -135,7 +135,10 @@ const Cart1 = {
         toastr.error("SDT nhập ko đúng định dạng nha bồ ?");
         e.preventDefault();
       } else {
-        if (getCookie("id") == "" || getCookie("id") == undefined) {
+        if (
+          localStorage.getItem("id") == "" ||
+          localStorage.getItem("id") == undefined
+        ) {
           const itemArray = JSON.parse(localStorage.getItem("itemsArray"));
           e.preventDefault();
           const billDetail = {
@@ -154,7 +157,7 @@ const Cart1 = {
           };
           console.log(billDetail);
           await BillingApi.add(billDetail);
-          localStorage.clear();
+          localStorage.removeItem("itemsArray");
           location.href = "/#/order-success";
         } else {
           const itemArray = JSON.parse(localStorage.getItem("itemsArray"));
@@ -168,13 +171,13 @@ const Cart1 = {
             state: $("#invoice_state").value,
             phone: $("#invoice_phone").value,
             total: localStorage.getItem("priceTemp"),
-            user: getCookie("id"),
+            user: localStorage.getItem("id"),
             status: "Đặt hàng",
             date: Date.now(),
             item: itemArray,
           };
           await BillingApi.add(billDetail);
-          localStorage.clear();
+          localStorage.removeItem("itemsArray");
           location.href = "/#/order-success";
         }
       }

@@ -50,7 +50,7 @@ const ProductAddPage = {
                 ${categories
                   .map((cate) => {
                     return `
-                    <option value="${cate.id}">${cate.name}</option>
+                    <option value="${cate._id}">${cate.name}</option>
                     `;
                   })
                   .join("")}
@@ -69,6 +69,7 @@ const ProductAddPage = {
   },
   afterRender() {
     $("#form-add").addEventListener("submit", async (e) => {
+      e.preventDefault();
       if ($("#product-name").value == "") {
         toastr.error("Chưa nhập tên sản phẩm kìa bồ ơi");
       } else if ($("#product-price").value == "") {
@@ -86,7 +87,7 @@ const ProductAddPage = {
       } else {
         const storageRef = firebase.storage().ref(`images/${file.name}`);
         await storageRef.put(file).then(function () {
-          storageRef.getDownloadURL().then((url) => {
+          storageRef.getDownloadURL().then(async (url) => {
             const product = {
               // id: Math.random().toString(36).substr(2, 6),
               name: $("#product-name").value,
@@ -94,9 +95,9 @@ const ProductAddPage = {
               quantity: $("#product-quantity").value,
               status: $("#product-status").checked ? true : false,
               category: $("#product-category").value,
-              image: url,
+              photo: url,
             };
-            ProductApi.add(product);
+            await ProductApi.add(localStorage.getItem("id"), product);
             toastr.success("Thêm sản phẩm thành công", "Thành công!");
             location.href = "/#/listproduct";
           });

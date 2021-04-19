@@ -32,7 +32,7 @@ const ListContact = {
               <td>${message.phone}</td>
               <td>${message.message}</td>
               <td><a href="mailto:${message.email}"><button class="btn btn-primary">Repmail</button></a>
-              <button class="btn btnss btn-danger btn-remove" data-id="${message.id}">Delete</button>
+              <button class="btn btnss btn-danger btn-remove" data-id="${message._id}">Delete</button>
               </td>
             </tr>
               `;

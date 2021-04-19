@@ -23,6 +23,17 @@ export const lists = (req, res) => {
   });
 };
 
+export const remove = async (req, res) => {
+  Contact.deleteOne({ _id: req.params.id })
+    .then((data) => {
+      res.json(`Xóa ô kê`);
+    })
+    .catch((err) => {
+      err;
+    });
+};
+
+
 // export const categoryById = (req, res, next, id) => {
 //   Category.findById(id).exec((err, category) => {
 //     if (err || !category) {

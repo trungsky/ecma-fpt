@@ -27,7 +27,7 @@ const ListProduct = {
               <tr>
               <td>${product._id}</td>
               <td>${product.name}</td>
-              <td><img src="${product.image}" width="40px"/></td>
+              <td><img src="${product.photo}" width="40px"/></td>
               <td>${formatter.format(product.price)}</td>
               <td>${product.quantity}</td>
               <td>${product.status ? "SALE" : "NOT SALE"}</td>
@@ -57,7 +57,7 @@ const ListProduct = {
         if (btn.classList.contains("btn-remove")) {
           const question = confirm("Xóa ko");
           if (question) {
-            await ProductApi.remove(id);
+            await ProductApi.remove(id, localStorage.getItem("id"));
             await reRender(ListProduct, "#list-product");
           }
         }

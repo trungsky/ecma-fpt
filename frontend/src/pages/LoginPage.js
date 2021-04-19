@@ -79,7 +79,7 @@ const LoginPage = {
                 <p class="lead">Not our registered customer yet?</p>
                 <p class="text-muted">Register now bro, if have problem <a href="/#/contact">contact us</a>, our customer service center is working for you 24/7.</p>
                 <hr>
-                <form id="reg_form" action="http://localhost:8081/api/signup" method="post">
+                <form id="reg_form">
                   <div class="form-group">
                     <label class="form-label" for="reg_name">Name</label>
                     <input class="form-control" name="name" id="reg_name" type="text">
@@ -109,6 +109,9 @@ const LoginPage = {
         `;
   },
   async afterRender() {
+    if (getCookie("t") != undefined) {
+      location.href = "/#/user";
+    }
     $("#cartDrop").addEventListener("click", async function (e) {
       $("#showCart").classList.toggle("show");
       $("#showCart1").classList.toggle("show");
@@ -119,35 +122,35 @@ const LoginPage = {
 
     $("#login_form").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const email = $("#log_email").value;
-      const password = $("#log_password").value;
-      const user = { email, password };
-      const { data: login } = await axios.post(
-        "http://localhost:8081/api/signin",
-        user
-      );
-      const { _id, name, role } = login.user;
-      localStorage.setItem("id", _id);
-      localStorage.setItem("name", name);
-      localStorage.setItem("role", role);
-      localStorage.setItem("email", email);
-      document.cookie = `t=${login.token}; expires=Fri, 31 Dec 2021 23:59:59 UTC`;
 
-      // if ($("#log_email").value == "") {
-      //   toastr.error("Bủh còn chưa nhập email kìa ?");
-      //   e.preventDefault();
-      // } else if (!$("#log_email").value.match(mailformat)) {
-      //   toastr.error("Email nhập ko có đúng định dạng nha ?");
-      //   e.preventDefault();
-      // } else if ($("#log_password").value == "") {
-      //   toastr.error("Bủh còn chưa nhập pass kìa ?");
-      //   e.preventDefault();
-      // }else{
-
-      // }
+      if ($("#log_email").value == "") {
+        toastr.error("Bủh còn chưa nhập email kìa ?");
+        e.preventDefault();
+      } else if (!$("#log_email").value.match(mailformat)) {
+        toastr.error("Email nhập ko có đúng định dạng nha ?");
+        e.preventDefault();
+      } else if ($("#log_password").value == "") {
+        toastr.error("Bủh còn chưa nhập pass kìa ?");
+        e.preventDefault();
+      } else {
+        const email = $("#log_email").value;
+        const password = $("#log_password").value;
+        const user = { email, password };
+        const { data: login } = await axios.post(
+          "http://localhost:8081/api/signin",
+          user
+        );
+        const { _id, name, role } = login.user;
+        localStorage.setItem("id", _id);
+        localStorage.setItem("name", name);
+        localStorage.setItem("role", role);
+        localStorage.setItem("email", email);
+        document.cookie = `t=${login.token}; expires=Fri, 31 Dec 2021 23:59:59 UTC`;
+        location.href = "/#/user";
+      }
     });
 
-    $("#reg_form").addEventListener("submit", (e) => {
+    $("#reg_form").addEventListener("submit", async (e) => {
       if ($("#reg_name").value == "") {
         toastr.error("Bủh còn chưa nhập tên kìa ?");
         e.preventDefault();
@@ -172,6 +175,33 @@ const LoginPage = {
       } else if ($("#reg_password").value.length < 6) {
         toastr.error("Pass phải hơn 6 ký tự nha bồ ?");
         e.preventDefault();
+      } else {
+        e.preventDefault();
+        toastr.success("Đăng ký thành công, tự động đăng nhập sau 3 giây");
+        const email = $("#reg_email").value;
+        const name = $("#reg_name").value;
+        const password = $("#reg_password").value;
+        const user = { name, email, password };
+
+        const { data: register } = await axios.post(
+          "http://localhost:8081/api/signup",
+          user
+        );
+
+        const { data: login } = await axios.post(
+          "http://localhost:8081/api/signin",
+          user
+        );
+        // const { _id, name, role } = login.user;
+        console.log(login.user);
+        localStorage.setItem("id", login.user._id);
+        localStorage.setItem("name", login.user.name);
+        localStorage.setItem("role", login.user.role);
+        localStorage.setItem("email", login.user.email);
+        document.cookie = `t=${login.token}; expires=Fri, 31 Dec 2021 23:59:59 UTC`;
+        setTimeout((e) => {
+          location.href = "/#/user";
+        }, 2000);
       }
     });
   },

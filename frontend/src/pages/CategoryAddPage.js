@@ -40,14 +40,11 @@ const CategoryAddPage = {
     $("#form-add").addEventListener("submit", async (e) => {
       e.preventDefault();
       const category = {
-        // id: "ID_" + Math.random().toString(36).substr(2, 6),
         name: $("#category-name").value,
       };
-      CategoryApi.add(category);
+      await CategoryApi.add(localStorage.getItem("id"), category);
       toastr.info("Thêm danh mục thành công");
-      toastr.success("Ahihi");
-      toastr.error("Đẳng cấp");
-      location.href = "/#/listcategory"
+      location.href = "/#/listcategory";
     });
   },
 };
