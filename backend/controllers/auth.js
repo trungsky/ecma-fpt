@@ -1,8 +1,6 @@
 import User from "../models/user";
 import jwt from "jsonwebtoken";
 import expressJwt from "express-jwt";
-// import { checkAdmin } from "../validator";
-// import { errorHandler } from "../helpers/dbErrorsHandler";
 
 export const signup = (req, res) => {
   const user = new User(req.body);

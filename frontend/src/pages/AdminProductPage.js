@@ -1,8 +1,10 @@
 import ListProduct from "../components/ListProduct";
-import { getCookie } from "../utils";
+import { getCookie, checkRole } from "../utils";
 import AdminMenu from "./AdminMenu";
 const AdminProductPage = {
   async render() {
+    checkRole();
+
     return /*html*/ `
     ${await AdminMenu.render()}
       ${await ListProduct.render()}

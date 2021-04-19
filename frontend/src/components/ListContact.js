@@ -1,8 +1,10 @@
 import ContactApi from "../api/ContactApi";
-import { $, reRender } from "../utils";
+import { $, reRender, checkRole } from "../utils";
 import AdminMenu from "../pages/AdminMenu";
 const ListContact = {
   async render() {
+    checkRole();
+
     const { data: contacts } = await ContactApi.getAll();
     return `
     ${await AdminMenu.render()}

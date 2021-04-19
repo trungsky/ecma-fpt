@@ -1,8 +1,10 @@
 import ListCategory from "../components/ListCategory";
-import { getCookie } from "../utils";
+import { getCookie, checkRole } from "../utils";
 import AdminMenu from "./AdminMenu";
 const AdminCategoryPage = {
   async render() {
+    checkRole();
+
 
     return /*html*/ `
     ${await AdminMenu.render()}

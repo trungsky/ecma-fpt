@@ -1,11 +1,11 @@
-import { parseRequestUrl, $ } from "../utils";
+import { parseRequestUrl, $, checkRole } from "../utils";
 import BannerApi from "../api/BannerApi";
 import AdminMenu from "./AdminMenu";
 const BannerEditPage = {
   async render() {
+    checkRole();
     const { id } = parseRequestUrl();
-    const { data: banner } = await BannerApi.get('6078fdee9a2cd21a44a13366');
-    console.log(banner);
+    const { data: banner } = await BannerApi.get("6078fdee9a2cd21a44a13366");
     return /*html*/ `
     ${await AdminMenu.render()}
     <div class="row">
@@ -14,14 +14,13 @@ const BannerEditPage = {
         <!-- Credit card form tabs -->
         <!-- End -->
 
-
         <!-- Credit card form content -->
         <div class="tab-content">
 
           <!-- credit card info-->
           <div id="nav-tab-card" class="tab-pane fade show active">
             <p class="text-center text-xl">Chỉnh sửa banner</p>
-            <form role="form" id="form-update" action"http://localhost:8081/api/banner/id">
+            <form role="form" id="form-update">
               <div class="form-group">
                 <label for="hero_text">Top text</label>
                 <input type="text" id="hero_text" placeholder="Hero text" value="${

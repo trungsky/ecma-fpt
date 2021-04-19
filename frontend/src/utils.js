@@ -58,7 +58,14 @@ export const getCateName = async (id) => {
   return categoryName.name;
 };
 
-export const showError = async (id) => {
-  const { data: categoryName } = await CategoryApi.get(id);
-  return categoryName.name;
+// export const showError = async (id) => {
+//   const { data: categoryName } = await CategoryApi.get(id);
+//   return categoryName.name;
+// };
+
+export const checkRole = () => {
+  const userRole = localStorage.getItem("role");
+  if (userRole != 1) {
+    location.href = "http://localhost:8080/#/account";
+  }
 };

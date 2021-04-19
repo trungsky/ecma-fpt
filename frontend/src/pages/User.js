@@ -5,17 +5,20 @@ import BillingApi from "../api/BillingApi";
 import AdminMenu from "./AdminMenu";
 const User = {
   async render() {
-    const { data: getUser } = await axios.post(
-      "http://localhost:8081/api/signin"
+    const { data: getUser } = await axios.get(
+      `http://localhost:8081/api/user/${localStorage.getItem("id")}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getCookie("t")}`,
+        },
+      }
     );
+    const user = getUser;
 
     const resStatus = getCookie("resStatus");
     if (resStatus != undefined) {
       if (resStatus == "login-ok") {
         toastr.success("Đăng nhập thành công nhé bủh!");
-      }
-      if (resStatus == "loged") {
-        toastr.info("Đăng nhập rồi mà bủh ơi ?", "Bủh sao thế");
       }
       if (resStatus == "register_ok") {
         toastr.info("Đăng ký thành công nha bủh");
@@ -25,11 +28,11 @@ const User = {
     const { data: billings } = await BillingApi.getAll();
     const getBill = billings
       .map((e) => {
-        if (getCookie("id") == e.user) {
+        if (user._id == e.user) {
           const dateBill = new Date(e.date);
           return `
         <tr>
-                <th class="py-4 align-middle"># ${e.id}</th>
+                <th class="py-4 align-middle"># ${e._id}</th>
                 <td class="py-4 align-middle">${
                   dateBill.getDate() +
                   "-" +
@@ -44,7 +47,7 @@ const User = {
                   e.status
                 }</span></td>
                 <td class="py-4 align-middle"><a class="btn btn-outline-dark btn-sm" href="/#/order/${
-                  e.id
+                  e._id
                 }">View</a></td>
               </tr>
               `;
@@ -52,15 +55,15 @@ const User = {
       })
       .join("");
 
-    const user = getUser.filter((e) => e._id === getCookie("id"));
-    if (getCookie("id") == undefined) {
-      alert("Bạn chưa đăng nhập");
-      document.location.href = "/";
-    }
-    const dateReg = new Date(user[0].regAt);
+    // const user = getUser.filter((e) => e._id === getCookie("id"));
+    // if (getCookie("id") == undefined) {
+    //   alert("Bạn chưa đăng nhập");
+    //   document.location.href = "/";
+    // }
+    const dateReg = new Date(user.createdAt);
 
     return /*html*/ `
-    ${user[0].role == 1 ? `${await AdminMenu.render()}` : ""}
+    ${user.role == 1 ? `${await AdminMenu.render()}` : ""}
     <section class="hero">
     <div class="container">
       <!-- Breadcrumbs -->
@@ -101,18 +104,24 @@ const User = {
         <!-- Customer Sidebar-->
         <div class="col-xl-3 col-lg-4 mb-5">
           <div class="customer-sidebar card border-0"> 
-            <div class="customer-profile"><img class="img-fluid rounded-circle customer-image" src="${
-              user[0].avatar
-            }">
-              <h4>${user[0].name}</h4>
-              <p class="text">${user[0].email}</p>
-              <p class="text-muted text-sm mb-0">Là thành viên từ: </br>${
-                (dateReg.getDate() < 10 ? "0" + dateReg.getDate() : dateReg.getDate()) +
+            <div class="customer-profile"><img class="img-fluid rounded-circle customer-image" src="">
+              <h4>${user.name}</h4>
+              <p class="text">${user.email}</p>
+              <p class="text-muted text-sm mb-0">Là thành viên từ: </br>
+              
+              ${
+                (dateReg.getDate() < 10
+                  ? "0" + dateReg.getDate()
+                  : dateReg.getDate()) +
                 "-" +
-                (dateReg.getMonth() + 1 < 10 ? "0" + (dateReg.getMonth() + 1) : (dateReg.getMonth() + 1)) +
+                (dateReg.getMonth() + 1 < 10
+                  ? "0" + (dateReg.getMonth() + 1)
+                  : dateReg.getMonth() + 1) +
                 "-" +
                 dateReg.getFullYear()
-              }</p>
+              }
+              
+              </p>
             </div>
             <nav class="list-group customer-nav"><a class="active list-group-item d-flex justify-content-between align-items-center" href="/#/user"><span>
                   <svg class="svg-icon svg-icon-heavy mr-2">

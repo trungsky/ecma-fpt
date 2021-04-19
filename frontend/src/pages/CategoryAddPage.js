@@ -1,8 +1,10 @@
 import CategoryApi from "../api/CategoryApi";
-import { $ } from "../utils";
+import { $, checkRole } from "../utils";
 import AdminMenu from "./AdminMenu";
 const CategoryAddPage = {
   async render() {
+    checkRole();
+
     const { data: categories } = await CategoryApi.getAll();
     return /*html*/ `
     ${await AdminMenu.render()}

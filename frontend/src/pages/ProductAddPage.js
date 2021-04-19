@@ -1,11 +1,13 @@
 import ProductApi from "../api/ProductApi";
 import CategoryApi from "../api/CategoryApi";
-import { $ } from "../utils";
+import { $, checkRole } from "../utils";
 import firebase from "firebase";
 import "../../firebase";
 import test from "./AdminMenu";
 const ProductAddPage = {
   async render() {
+    checkRole();
+
     const { data: categories } = await CategoryApi.getAll();
     return /*html*/ `
     ${await test.render()}
@@ -73,7 +75,7 @@ const ProductAddPage = {
         toastr.error("Chưa nhập giá sản phẩm kìa bồ ơi");
       } else if ($("#product-price").value < 0) {
         toastr.error("Giá ko hợp lý nha bồ");
-      }else if ($("#product-quantity").value < 0) {
+      } else if ($("#product-quantity").value < 0) {
         toastr.error("quantity ko hợp lý nha bồ");
       }
 

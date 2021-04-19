@@ -22,11 +22,11 @@ const LoginPage = {
         toastr.error("User hổng có trên hệ thống nha bủh!");
       }
     }
-    const CCID = getCookie("t");
-    if (CCID != undefined) {
-      document.cookie = `resStatus=loged; max-age=5;`;
-      location.href = "/#/user";
-    }
+    // const CCID = getCookie("t");
+    // if (CCID != undefined) {
+    //   document.cookie = `resStatus=loged; max-age=5;`;
+    //   location.href = "/#/user";
+    // }
     return /*html*/ `
       <section class="hero">
       <div class="container">
@@ -130,6 +130,8 @@ const LoginPage = {
       localStorage.setItem("id", _id);
       localStorage.setItem("name", name);
       localStorage.setItem("role", role);
+      localStorage.setItem("email", email);
+      document.cookie = `t=${login.token}; expires=Fri, 31 Dec 2021 23:59:59 UTC`;
 
       // if ($("#log_email").value == "") {
       //   toastr.error("Bủh còn chưa nhập email kìa ?");

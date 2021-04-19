@@ -1,9 +1,9 @@
 import express from "express";
 const router = express.Router();
-// import { requireSignin, isAuth, isAdmin } from "../controllers/auth";
-// import { userById } from "../controllers/user";
+import { requireSignin, isAuth, isAdmin } from "../controllers/auth";
+import { userById } from "../controllers/user";
 
-import { lists, create, getById, editById} from "../controllers/banner";
+import { lists, create, getById, editById } from "../controllers/banner";
 
 router.get("/banner", lists);
 router.get("/banner/:id", getById);

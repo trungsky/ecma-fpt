@@ -21,9 +21,9 @@ export const create = async (req, res) => {
 
     let product = new Product(fields);
     if (files.photo) {
-      if (files.photo.size > 100000) {
+      if (files.photo.size > 500000) {
         res.status(400).json({
-          error: "Bạn nên upload ảnh dưới 1mb",
+          error: "Bạn nên upload ảnh dưới 5mb",
         });
       }
       product.photo.data = fs.readFileSync(files.photo.path);

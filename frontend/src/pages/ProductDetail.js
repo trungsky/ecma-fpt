@@ -136,7 +136,7 @@ const ProductDetail = {
         toastr.error("Vớ va vớ vẩn");
       } else {
         var newItem = {
-          id: `${products.id}`,
+          id: `${products._id}`,
           name: `${products.name}`,
           price: `${products.price}`,
           image: `${products.image}`,

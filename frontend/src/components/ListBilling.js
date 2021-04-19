@@ -1,8 +1,10 @@
 import BillingApi from "../api/BillingApi";
-import { $, formatter, reRender } from "../utils";
+import { $, formatter, reRender, checkRole } from "../utils";
 import AdminMenu from "../pages/AdminMenu";
 const ListBilling = {
   async render() {
+    checkRole();
+
     const { data: billing } = await BillingApi.getAll();
     return `
     ${await AdminMenu.render()}

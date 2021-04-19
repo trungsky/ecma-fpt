@@ -8,10 +8,16 @@ const OrderDetail = {
     const { data: getBill } = await BillingApi.get(id);
     const date = new Date(getBill.date);
     const { data: getUser } = await axios.get(
-        "http://localhost:5000/api/getUser"
-      );
-    const user = getUser.filter((e) => e._id === getCookie("id"));
-    const dateReg = new Date(user[0].regAt);
+      `http://localhost:8081/api/user/${localStorage.getItem("id")}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getCookie("t")}`,
+        },
+      }
+    );
+    console.log(getBill.item);
+    const user = getUser;
+    const dateReg = new Date(user.createdAt);
 
     const datetime =
       date.getHours() +
@@ -61,14 +67,14 @@ const OrderDetail = {
       <ol class="breadcrumb justify-content-center">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
         <li class="breadcrumb-item"><a href="customer-orders.html">Orders</a></li>
-        <li class="breadcrumb-item active">Order #${getBill.id}        </li>
+        <li class="breadcrumb-item active">Order #${getBill._id}        </li>
       </ol>
       <!-- Hero Content-->
       <div class="hero-content pb-5 text-center">
-        <h1 class="hero-heading">Order #${getBill.id}</h1>
+        <h1 class="hero-heading">Order #${getBill._id}</h1>
         <div class="row">   
           <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Order #${
-            getBill.id
+            getBill._id
           } was placed on <strong>${datetime}</strong> and is currently <strong>${
       getBill.status
     }</strong>.</p><p class="text-muted">If you have any questions, please feel free to <a href="/#/contact">contact us</a>, our customer service center is working for you 24/7.</p></div>
@@ -141,8 +147,8 @@ const OrderDetail = {
         <!-- Customer Sidebar-->
         <div class="col-xl-3 col-lg-4 mb-5">
           <div class="customer-sidebar card border-0"> 
-            <div class="customer-profile"><img class="img-fluid rounded-circle customer-image" src="${user[0].avatar}">
-              <h5>${user[0].name}</h5>
+            <div class="customer-profile"><img class="img-fluid rounded-circle customer-image" src="">
+              <h5>${user.name}</h5>
               <p class="text-muted text-sm mb-0">Là thành viên từ: </br>${
                 dateReg.getDate() +
                 "-" +
