@@ -17,8 +17,8 @@ const ProductApi = {
     const url = `/products/${id}`;
     return axiosClient.get(url);
   },
-  add(product) {
-    const url = `/products/create/:userId`;
+  add(id, product) {
+    const url = `/products/create/${id}`;
     return axiosClient.post(url, product, {
       headers: {
         Authorization: "Bearer " + getCookie("t"),

@@ -16,15 +16,15 @@ const cookieParser = require("cookie-parser");
 dotenv.config();
 
 const app = express();
+app.use(cors({ credentials: "same-origin" }));
 
 app.use(cookieParser());
 app.use(expressValidator());
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// app.use(express.json());
 // Only login, banner, category
 
-app.use(cors({ credentials: "same-origin" }));
 const port = process.env.PORT || 8080;
 
 // Routes

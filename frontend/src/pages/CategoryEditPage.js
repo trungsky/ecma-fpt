@@ -17,7 +17,7 @@ const CategoryEditPage = {
           <!-- credit card info-->
           <div id="nav-tab-card" class="tab-pane fade show active">
             <p class="text-center text-xl">Chỉnh sửa category</p>
-            <form role="form" id="form-update">
+            <form id="form-update">
               <div class="form-group">
                 <label for="category-id">ID Category</label>
                 <input type="text" id="category-id" placeholder="Tên sản phẩm" value="${categories._id}" disabled class="form-control">
@@ -25,7 +25,7 @@ const CategoryEditPage = {
               <div class="form-group">
                 <label for="category-name">Category name</label>
                 <div class="input-group">
-                  <input type="text" id="category-name" placeholder="Your card number" value="${categories.name}" class="form-control" required>
+                  <input type="text" name="categoryee" id="category-name" placeholder="Your card number" value="${categories.name}" class="form-control" required>
                 </div>
               </div>
               

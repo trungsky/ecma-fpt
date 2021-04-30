@@ -20,7 +20,7 @@ const CategoryPage = {
           <div class="product-image">
             ${
               product.status ? '<div class="ribbon ribbon-info">SALE</div>' : ""
-            }<img class="img-fluid" src="${product.image}" alt="product"/>
+            }<img class="img-fluid" src="${product.photo}" alt="product"/>
             <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="/#/products/${
               product._id
             }"></a>

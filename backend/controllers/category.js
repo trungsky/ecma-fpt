@@ -63,6 +63,6 @@ export const update = (req, res) => {
         error: "Danh mục không tồn tại",
       });
     }
-    res.json({ data });
+    res.json( data);
   });
 };

@@ -38,7 +38,7 @@ export const editById = async (req, res) => {
     { _id: req.params.id },
     req.body
   );
-  res.json(banner)
+  res.json(banner);
   //   .then((data) => {
   //     res.json(data);
   //   })

@@ -124,6 +124,8 @@ const ProductEditPage = {
         };
         ProductApi.update(id, localStorage.getItem("id"), newProduct);
         toastr.success("Update thành công!", "Thành công");
+        location.href = "/#/listproduct";
+
       } else {
         const storageRef = firebase.storage().ref(`images/${file.name}`);
         await storageRef.put(file).then(function () {
@@ -140,6 +142,7 @@ const ProductEditPage = {
             };
             ProductApi.update(id, localStorage.getItem("id"), newProduct);
             toastr.success("Update thành công!", "Thành công");
+            location.href = "/#/listproduct";
           });
         });
       }
